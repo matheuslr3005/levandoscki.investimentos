@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="pt-BR" class="is-loading">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Levandoscki Investimentos — Consórcios e alavancagem patrimonial</title>
+<meta name="description" content="Consórcio imobiliário, consórcio de veículos, investimentos e alavancagem patrimonial. + de R$ 150 milhões sob gestão. Me chama que eu descomplico.">
+<meta name="theme-color" content="#0a0c10">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Levandoscki Investimentos — Seu patrimônio merece subir de andar">
+<meta property="og:description" content="Consórcios, investimentos e alavancagem patrimonial. Simule, entenda e conquiste.">
+<meta property="og:locale" content="pt_BR">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/styles.css">
+<noscript><style>.preloader{display:none}html.is-loading{overflow:auto}[data-reveal],.hero__title .line__in{opacity:1!important;transform:none!important}</style></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FinancialService","name":"Levandoscki Investimentos","description":"Consórcio imobiliário, consórcio de veículos, investimentos e alavancagem patrimonial.","sameAs":["https://www.instagram.com/levandoscki.investimentos/"]}
+</script>
+</head>
+<body>
+
+<!-- Símbolos SVG reutilizáveis -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3dfb0"/>
+      <stop offset=".55" stop-color="#c9a66b"/>
+      <stop offset="1" stop-color="#8f6b33"/>
+    </linearGradient>
+    <symbol id="lev-mark" viewBox="0 0 100 112">
+      <path d="M8 0 L28 10 L28 92 L82 92 L82 108 L8 108 Z" fill="url(#gGold)"/>
+      <path d="M36 26 L48 32 L48 76 L82 76 L82 84 L36 84 Z" fill="#a98249"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Preloader -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__curtain"></div>
+  <div class="preloader__inner">
+    <svg class="preloader__mark" viewBox="0 0 100 112">
+      <path class="draw" d="M8 0 L28 10 L28 92 L82 92 L82 108 L8 108 Z" pathLength="1"/>
+      <path class="draw draw--2" d="M36 26 L48 32 L48 76 L82 76 L82 84 L36 84 Z" pathLength="1"/>
+    </svg>
+    <div class="preloader__count"><span id="preCount">000</span><i>%</i></div>
+    <div class="preloader__label">Subindo ao térreo</div>
+  </div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"><b class="cursor__label"></b></span></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<a class="skip" href="#solucoes">Pular para o conteúdo</a>
+
+<!-- Navegação -->
+<header class="nav" id="nav">
+  <a class="brand" href="#terreo" aria-label="Levandoscki Investimentos — início">
+    <svg class="brand__mark" viewBox="0 0 100 112" aria-hidden="true"><use href="#lev-mark"/></svg>
+    <span class="brand__txt"><b>LEVANDOSCKI</b><small>INVESTIMENTOS</small></span>
+  </a>
+  <nav class="nav__links" aria-label="Principal">
+    <a href="#solucoes" data-cursor="ver">Soluções</a>
+    <a href="#simulador" data-cursor="ver">Simulador</a>
+    <a href="#assembleia" data-cursor="ver">Assembleia</a>
+    <a href="#metodo" data-cursor="ver">Método</a>
+    <a href="#duvidas" data-cursor="ver">Dúvidas</a>
+  </nav>
+  <a class="btn btn--sm btn--gold" href="https://wa.link/2q9z90" target="_blank" rel="noopener" data-magnetic>
+    <span>Chamar no Whats</span>
+  </a>
+  <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="drawer"><i></i><i></i></button>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <a href="#solucoes"><i>01</i>Soluções</a>
+  <a href="#simulador"><i>02</i>Simulador</a>
+  <a href="#assembleia"><i>03</i>Assembleia</a>
+  <a href="#metodo"><i>04</i>Método</a>
+  <a href="#duvidas"><i>05</i>Dúvidas</a>
+  <a href="https://wa.link/2q9z90" target="_blank" rel="noopener" class="drawer__cta">Chamar no WhatsApp →</a>
+</div>
+
+<!-- Elevador -->
+<aside class="elevator" id="elevator" aria-label="Elevador de seções">
+  <div class="elevator__display" aria-hidden="true"><small>ANDAR</small><div class="elevator__digits"><span id="floorNum">T</span></div></div>
+  <div class="elevator__shaft">
+    <div class="elevator__line"><i id="elevFill"></i></div>
+    <div class="elevator__car" id="elevCar"></div>
+    <ol class="elevator__floors">
+      <li><a href="#terreo" data-floor-link="0" data-label="Térreo"><b>T</b></a></li>
+      <li><a href="#solucoes" data-floor-link="1" data-label="Soluções"><b>1</b></a></li>
+      <li><a href="#simulador" data-floor-link="2" data-label="Simulador"><b>2</b></a></li>
+      <li><a href="#assembleia" data-floor-link="3" data-label="Assembleia"><b>3</b></a></li>
+      <li><a href="#metodo" data-floor-link="4" data-label="Método"><b>4</b></a></li>
+      <li><a href="#duvidas" data-floor-link="5" data-label="Dúvidas"><b>5</b></a></li>
+      <li><a href="#contato" data-floor-link="6" data-label="Cobertura"><b>C</b></a></li>
+    </ol>
+  </div>
+</aside>
+
+<main>
+
+<!-- ============ ANDAR T · HERO ============ -->
+<section class="hero" id="terreo" data-floor="0">
+  <canvas class="hero__logo" id="logoCanvas" aria-hidden="true"></canvas>
+  <canvas class="hero__sky" id="skyCanvas" aria-hidden="true"></canvas>
+
+  <div class="hero__content">
+    <p class="eyebrow" data-reveal><span class="eyebrow__dot"></span>Alavancagem financeira e patrimonial</p>
+    <h1 class="hero__title" aria-label="Seu patrimônio merece subir de andar.">
+      <span class="line"><span class="line__in">Seu patrimônio</span></span>
+      <span class="line"><span class="line__in">merece <em>subir</em></span></span>
+      <span class="line"><span class="line__in">de andar.</span></span>
+    </h1>
+    <p class="hero__sub" data-reveal style="--d:.5s">
+      Consórcio imobiliário, consórcio de veículos e estratégia de investimentos — explicados do jeito que deveria ser: simples. Me chama que eu descomplico.
+    </p>
+    <div class="hero__cta" data-reveal style="--d:.65s">
+      <a class="btn btn--gold btn--lg" href="https://wa.link/2q9z90" target="_blank" rel="noopener" data-magnetic>
+        <span>Chamar no WhatsApp</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn--ghost btn--lg" href="#simulador" data-magnetic><span>Simular agora</span></a>
+    </div>
+    <div class="hero__stat" data-reveal style="--d:.8s">
+      <div class="hero__stat-num"><small>+ de R$</small><span data-count="150" data-count-dur="2600">0</span><small>milhões</small></div>
+      <div class="hero__stat-lab">sob gestão</div>
+    </div>
+  </div>
+
+  <div class="hero__hint" id="heroHint"><span class="pulse"></span><span class="hint-desk">Mexa o mouse · clique para desmontar</span><span class="hint-touch">Toque para desmontar</span></div>
+  <div class="hero__scroll" aria-hidden="true"><span>Role para subir</span><i></i></div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-wrap" aria-hidden="true">
+<div class="marquee" id="marquee">
+  <div class="marquee__track">
+    <span>Consórcio imobiliário</span><i>◆</i><span>Consórcio de veículos</span><i>◆</i><span>Investimentos</span><i>◆</i><span>Alavancagem patrimonial</span><i>◆</i><span>Planejamento</span><i>◆</i>
+    <span>Consórcio imobiliário</span><i>◆</i><span>Consórcio de veículos</span><i>◆</i><span>Investimentos</span><i>◆</i><span>Alavancagem patrimonial</span><i>◆</i><span>Planejamento</span><i>◆</i>
+  </div>
+</div>
+</div>
+
+<!-- ============ ANDAR 1 · SOLUÇÕES ============ -->
+<section class="section" id="solucoes" data-floor="1">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="sec-tag" data-reveal><b>Andar 01</b> Soluções</p>
+      <h2 class="sec-title" data-split>Quatro andares. Um prédio inteiro de <em>possibilidades.</em></h2>
+      <p class="sec-lead" data-reveal>Passe o mouse (ou toque) em cada andar para abrir. Cada solução conversa com as outras — é aí que o patrimônio sobe de verdade.</p>
+    </header>
+
+    <div class="floors" id="floors">
+      <article class="floor is-active" tabindex="0" data-spot data-cursor="abrir">
+        <span class="floor__no">01</span>
+        <span class="floor__vt">Consórcio Imobiliário</span>
+        <div class="floor__main">
+          <h3>Consórcio<br><em>Imobiliário</em></h3>
+          <p>Casa, apartamento, terreno ou obra. Você compra sem pagar juros — apenas taxas de administração diluídas no prazo — e ainda pode usar lance para acelerar.</p>
+          <ul class="ticks"><li>Residencial, comercial e terreno</li><li>Construção e reforma</li><li>Lance e carta de crédito estratégicos</li></ul>
+          <a class="link" href="#simulador" data-sim-mode="imovel">Simular imóvel <span>→</span></a>
+        </div>
+        <svg class="floor__art art-building" viewBox="0 0 220 280" aria-hidden="true">
+          <path d="M30 276V60l80-40 80 40v216" fill="none" stroke="url(#gGold)" stroke-width="2"/>
+          <path d="M10 276h200" stroke="#c9a66b" stroke-opacity=".5" stroke-width="2"/>
+          <g data-windows></g>
+        </svg>
+      </article>
+
+      <article class="floor" tabindex="0" data-spot data-cursor="abrir">
+        <span class="floor__no">02</span>
+        <span class="floor__vt">Consórcio de Veículos</span>
+        <div class="floor__main">
+          <h3>Consórcio<br><em>de Veículos</em></h3>
+          <p>Carro, moto, caminhão ou utilitário para o trabalho. Planejamento sem a pressão de parcelas com juros e com a flexibilidade de trocar de bem depois.</p>
+          <ul class="ticks"><li>Carros, motos e pesados</li><li>Parcelas que cabem no seu fluxo</li><li>Planejamento de troca e upgrade</li></ul>
+          <a class="link" href="#simulador" data-sim-mode="veiculo">Simular veículo <span>→</span></a>
+        </div>
+        <svg class="floor__art art-gauge" viewBox="0 0 260 200" aria-hidden="true">
+          <path d="M30 170a100 100 0 0 1 200 0" fill="none" stroke="url(#gGold)" stroke-width="3" stroke-linecap="round"/>
+          <g class="ticks-g" stroke="#c9a66b" stroke-opacity=".6" stroke-width="2"></g>
+          <g class="needle"><line x1="130" y1="170" x2="130" y2="88" stroke="#f3dfb0" stroke-width="3" stroke-linecap="round"/></g>
+          <circle cx="130" cy="170" r="9" fill="#c9a66b"/>
+          <text x="130" y="196" text-anchor="middle" fill="#8a8f9a" font-size="11" font-family="JetBrains Mono, monospace" letter-spacing="2">MARCHA PATRIMONIAL</text>
+        </svg>
+      </article>
+
+      <article class="floor" tabindex="0" data-spot data-cursor="abrir">
+        <span class="floor__no">03</span>
+        <span class="floor__vt">Investimentos</span>
+        <div class="floor__main">
+          <h3>Inves&shy;<em>timentos</em></h3>
+          <p>Carteira desenhada para o seu objetivo, prazo e perfil de risco. Reserva, renda e crescimento — cada real com uma função clara.</p>
+          <ul class="ticks"><li>Diagnóstico de perfil</li><li>Reserva, renda e crescimento</li><li>Acompanhamento e rebalanceamento</li></ul>
+          <a class="link" href="#simulador" data-sim-mode="invest">Simular investimento <span>→</span></a>
+        </div>
+        <svg class="floor__art art-chart" viewBox="0 0 260 200" aria-hidden="true">
+          <g class="bars"></g>
+          <path class="line-draw" d="M10 170 C50 160 60 120 100 125 S150 80 180 70 S230 25 252 12" fill="none" stroke="url(#gGold)" stroke-width="3" stroke-linecap="round" pathLength="1"/>
+          <circle class="dot-end" cx="252" cy="12" r="5" fill="#f3dfb0"/>
+        </svg>
+      </article>
+
+      <article class="floor" tabindex="0" data-spot data-cursor="abrir">
+        <span class="floor__no">04</span>
+        <span class="floor__vt">Alavancagem</span>
+        <div class="floor__main">
+          <h3>Alavancagem<br><em>Patrimonial</em></h3>
+          <p>Usar tempo, crédito e estratégia para fazer um esforço pequeno levantar um patrimônio grande. É a ciência de transformar uma carta em um ativo que trabalha por você.</p>
+          <ul class="ticks"><li>Cartas de crédito como ferramenta</li><li>Imóveis para renda e valorização</li><li>Estratégia combinada com investimentos</li></ul>
+          <a class="link" href="https://wa.link/2q9z90" target="_blank" rel="noopener">Conversar sobre estratégia <span>→</span></a>
+        </div>
+        <svg class="floor__art art-lever" viewBox="0 0 280 200" aria-hidden="true">
+          <g class="beam">
+            <rect x="20" y="118" width="240" height="6" rx="3" fill="url(#gGold)"/>
+            <rect x="26" y="52" width="66" height="66" rx="4" fill="#c9a66b" fill-opacity=".18" stroke="#c9a66b"/>
+            <text x="59" y="92" text-anchor="middle" fill="#f3dfb0" font-size="11" font-family="JetBrains Mono, monospace">PATRIMÔNIO</text>
+            <rect x="222" y="92" width="26" height="26" rx="3" fill="#f3dfb0"/>
+            <text x="235" y="84" text-anchor="middle" fill="#8a8f9a" font-size="10" font-family="JetBrains Mono, monospace">VOCÊ</text>
+          </g>
+          <path d="M140 124l-26 52h52z" fill="#1c212b" stroke="#c9a66b"/>
+          <path d="M60 176h160" stroke="#c9a66b" stroke-opacity=".5" stroke-width="2"/>
+        </svg>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANDAR 2 · SIMULADOR ============ -->
+<section class="section section--alt" id="simulador" data-floor="2">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="sec-tag" data-reveal><b>Andar 02</b> Simulador</p>
+      <h2 class="sec-title" data-split>Elevador de <em>patrimônio.</em></h2>
+      <p class="sec-lead" data-reveal>Arraste, ajuste e veja a torre crescer. Compare consórcio e financiamento ou projete seus investimentos — tudo em tempo real, com as premissas à mostra.</p>
+    </header>
+
+    <div class="sim" id="sim">
+      <div class="sim__tabs" role="tablist" aria-label="Tipo de simulação">
+        <button role="tab" class="is-on" data-mode="imovel" aria-selected="true"><span>01</span> Imóvel</button>
+        <button role="tab" data-mode="veiculo" aria-selected="false"><span>02</span> Veículo</button>
+        <button role="tab" data-mode="invest" aria-selected="false"><span>03</span> Investir</button>
+        <i class="sim__tabs-glow"></i>
+      </div>
+
+      <div class="sim__grid">
+        <!-- Controles -->
+        <div class="card sim__controls" data-spot>
+          <div class="ctl-group" data-for="cons">
+            <div class="ctl">
+              <label for="rCredit"><span id="lblCredit">Valor da carta de crédito</span><output id="oCredit" class="mono">R$ 400.000</output></label>
+              <input type="range" id="rCredit" min="100000" max="1500000" step="10000" value="400000">
+            </div>
+            <div class="ctl">
+              <label for="rMonths"><span>Prazo</span><output id="oMonths" class="mono">180 meses</output></label>
+              <input type="range" id="rMonths" min="60" max="240" step="12" value="180">
+            </div>
+            <details class="prem">
+              <summary>Premissas <small>(ajuste e veja o efeito)</small></summary>
+              <div class="ctl ctl--sm">
+                <label for="rFee"><span>Taxas do consórcio no prazo <em>(adm + fundo de reserva)</em></span><output id="oFee" class="mono">18%</output></label>
+                <input type="range" id="rFee" min="8" max="30" step="1" value="18">
+              </div>
+              <div class="ctl ctl--sm">
+                <label for="rFin"><span>Juros do financiamento <em>(ao mês)</em></span><output id="oFin" class="mono">1,00%</output></label>
+                <input type="range" id="rFin" min="0.5" max="2.6" step="0.05" value="1">
+              </div>
+            </details>
+          </div>
+
+          <div class="ctl-group" data-for="inv" hidden>
+            <div class="ctl">
+              <label for="rAporte"><span>Aporte mensal</span><output id="oAporte" class="mono">R$ 2.000</output></label>
+              <input type="range" id="rAporte" min="300" max="20000" step="100" value="2000">
+            </div>
+            <div class="ctl">
+              <label for="rYears"><span>Tempo</span><output id="oYears" class="mono">10 anos</output></label>
+              <input type="range" id="rYears" min="1" max="30" step="1" value="10">
+            </div>
+            <details class="prem" open>
+              <summary>Premissa <small>(ilustrativa)</small></summary>
+              <div class="ctl ctl--sm">
+                <label for="rRate"><span>Rentabilidade <em>(ao ano)</em></span><output id="oRate" class="mono">10,0%</output></label>
+                <input type="range" id="rRate" min="3" max="18" step="0.5" value="10">
+              </div>
+            </details>
+          </div>
+
+          <button class="btn btn--gold btn--block" id="simCta" data-magnetic>
+            <span>Quero esse plano</span>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p class="fine">Copiamos o resumo para você colar na conversa do WhatsApp.</p>
+        </div>
+
+        <!-- Torre -->
+        <div class="card sim__tower" data-spot>
+          <div class="tower__cap"><small id="towerLabel">Sua carta equivale a</small><strong class="mono" id="towerCount">10 andares</strong></div>
+          <div class="tower" id="tower" aria-hidden="true"><div class="tower__crown"></div><div class="tower__stack" id="towerStack"></div><div class="tower__ground"></div></div>
+          <p class="tower__unit" id="towerUnit">cada andar = R$ 40 mil</p>
+        </div>
+
+        <!-- Resultados -->
+        <div class="card sim__results" data-spot>
+          <div class="res res--cons" data-for="cons">
+            <div class="res__cols">
+              <div class="res__col res__col--gold">
+                <small>Consórcio</small>
+                <strong class="mono" id="resConsPmt">R$ 0</strong>
+                <span>parcela estimada /mês</span>
+                <em id="resConsFee">taxas: R$ 0</em>
+              </div>
+              <div class="res__col">
+                <small>Financiamento</small>
+                <strong class="mono" id="resFinPmt">R$ 0</strong>
+                <span>parcela estimada /mês</span>
+                <em id="resFinInt">juros: R$ 0</em>
+              </div>
+            </div>
+            <div class="bars2">
+              <div class="bar2"><div class="bar2__lab"><span>Consórcio</span><b class="mono" id="barConsTot">R$ 0</b></div><div class="bar2__track"><i class="bar2__main bar2__main--gold" id="barConsMain"></i><i class="bar2__cost bar2__cost--gold" id="barConsCost"></i></div></div>
+              <div class="bar2"><div class="bar2__lab"><span>Financiamento</span><b class="mono" id="barFinTot">R$ 0</b></div><div class="bar2__track"><i class="bar2__main" id="barFinMain"></i><i class="bar2__cost" id="barFinCost"></i></div></div>
+              <div class="bars2__legend"><span><i class="lg lg--main"></i>valor do bem</span><span><i class="lg lg--cost"></i>custo (taxas ou juros)</span></div>
+            </div>
+            <div class="diff">
+              <small>Diferença no custo total</small>
+              <strong class="mono" id="resDiff">R$ 0</strong>
+              <p id="resDiffTxt">a menos no consórcio</p>
+            </div>
+            <p class="note"><b>Importante:</b> no consórcio o crédito é liberado quando você é contemplado (sorteio ou lance) — veja como funciona na <a href="#assembleia">Assembleia</a>. No financiamento o dinheiro é imediato, mas os juros pesam. Comparação simplificada: financiamento a 100% do valor, tabela Price, sem seguros nem taxas extras.</p>
+          </div>
+
+          <div class="res res--inv" data-for="inv" hidden>
+            <div class="res__cols res__cols--3">
+              <div class="res__col"><small>Total aportado</small><strong class="mono" id="resInvIn">R$ 0</strong></div>
+              <div class="res__col"><small>Rendimento estimado</small><strong class="mono" id="resInvGain">R$ 0</strong></div>
+              <div class="res__col res__col--gold"><small>Patrimônio projetado</small><strong class="mono" id="resInvTot">R$ 0</strong></div>
+            </div>
+            <div class="chart" id="chart">
+              <svg viewBox="0 0 600 240" preserveAspectRatio="none" aria-label="Projeção do patrimônio">
+                <defs><linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9a66b" stop-opacity=".5"/><stop offset="1" stop-color="#c9a66b" stop-opacity="0"/></linearGradient></defs>
+                <g class="chart__grid"></g>
+                <path id="chArea" fill="url(#gArea)"/>
+                <path id="chInv" fill="none" stroke="#8a8f9a" stroke-width="2" stroke-dasharray="5 6" vector-effect="non-scaling-stroke"/>
+                <path id="chTot" fill="none" stroke="url(#gGold)" stroke-width="3" vector-effect="non-scaling-stroke"/>
+              </svg>
+              <div class="chart__legend"><span><i class="lg lg--gold"></i>patrimônio projetado</span><span><i class="lg lg--dash"></i>total aportado</span></div>
+            </div>
+            <p class="note"><b>Importante:</b> a rentabilidade é uma premissa ilustrativa, não uma promessa. Investimentos envolvem riscos e resultados passados não garantem resultados futuros.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANDAR 3 · ASSEMBLEIA ============ -->
+<section class="section" id="assembleia" data-floor="3">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="sec-tag" data-reveal><b>Andar 03</b> Assembleia ao vivo</p>
+      <h2 class="sec-title" data-split>Sorteio, lance e <em>sorte bem planejada.</em></h2>
+      <p class="sec-lead" data-reveal>Consórcio não é loteria: é estratégia. Dê o seu lance, rode as assembleias e veja na prática quando você seria contemplado — e quanto o lance muda o jogo.</p>
+    </header>
+
+    <div class="asm" id="asm">
+      <div class="card asm__group" data-spot>
+        <div class="asm__group-head"><h3>Seu grupo</h3><span class="mono" id="asmStat">100 cotas · mês 0</span></div>
+        <div class="grid100" id="grid100" aria-label="Cotas do grupo"></div>
+        <div class="asm__legend">
+          <span><i class="dotl dotl--you"></i>sua cota</span>
+          <span><i class="dotl dotl--on"></i>no jogo</span>
+          <span><i class="dotl dotl--off"></i>contemplada</span>
+        </div>
+        <div class="timeline" id="timeline" aria-label="Linha do tempo das assembleias"></div>
+        <ol class="asm__how">
+          <li><b>1</b><span>Todo mês acontece uma assembleia: <strong>uma cota é contemplada por sorteio</strong> e outra pelo <strong>maior lance</strong>.</span></li>
+          <li><b>2</b><span>Quem é contemplado recebe a carta de crédito e sai da disputa — o grupo vai ficando menor, e suas chances, maiores.</span></li>
+          <li><b>3</b><span>O lance antecipa o seu momento, mas exige ter recursos disponíveis. Por isso planejamos antes.</span></li>
+        </ol>
+      </div>
+
+      <div class="card asm__draw" data-spot>
+        <div class="bombo-wrap">
+          <canvas id="bombo" width="320" height="320" aria-label="Bombo de sorteio"></canvas>
+          <div class="bombo__ball" id="bomboBall"><small>cota</small><b class="mono" id="bomboNum">—</b></div>
+        </div>
+        <div class="asm__log" id="asmLog" aria-live="polite">
+          <div class="log__line"><small>Sorteio</small><b id="logDraw">—</b></div>
+          <div class="log__line"><small>Maior lance</small><b id="logBid">—</b></div>
+          <div class="log__line log__line--you"><small>Você</small><b id="logYou">Aguardando a primeira assembleia</b></div>
+        </div>
+      </div>
+
+      <div class="card asm__ctl" data-spot>
+        <div class="ctl">
+          <label for="rBid"><span>Seu lance <em>(% da carta)</em></span><output id="oBid" class="mono">0%</output></label>
+          <input type="range" id="rBid" min="0" max="60" step="1" value="0">
+          <p class="bidval mono" id="bidVal">Sem lance — só no sorteio</p>
+        </div>
+        <div class="ctl">
+          <span class="ctl__lab">Concorrência no grupo</span>
+          <div class="seg" id="seg" role="radiogroup" aria-label="Concorrência">
+            <button role="radio" aria-checked="false" data-lvl="0.04">Baixa</button>
+            <button role="radio" aria-checked="true" class="is-on" data-lvl="0.08">Média</button>
+            <button role="radio" aria-checked="false" data-lvl="0.15">Alta</button>
+          </div>
+        </div>
+        <div class="odds">
+          <div class="odds__item"><small>Chance de contemplar em 12 meses</small><strong class="mono" id="oddsYear">—</strong></div>
+          <div class="odds__item"><small>Mediana de 1.000 grupos simulados</small><strong class="mono" id="oddsMed">—</strong></div>
+          <div class="odds__meter"><i id="oddsBar"></i></div>
+        </div>
+        <div class="asm__btns">
+          <button class="btn btn--gold" id="btnRun" data-magnetic><span>Rodar assembleia</span></button>
+          <button class="btn btn--ghost" id="btnAuto" data-magnetic><span>Simular até contemplar</span></button>
+          <button class="btn btn--text" id="btnReset"><span>Reiniciar grupo</span></button>
+        </div>
+        <p class="fine">Ilustração educativa: grupo de 100 cotas, 1 contemplação por sorteio e 1 por maior lance a cada mês. As regras reais variam conforme a administradora e o grupo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANDAR 4 · MÉTODO ============ -->
+<section class="section section--alt" id="metodo" data-floor="4">
+  <div class="wrap">
+    <header class="sec-head">
+      <p class="sec-tag" data-reveal><b>Andar 04</b> Método</p>
+      <h2 class="sec-title" data-split>Do primeiro papo à <em>chave na mão.</em></h2>
+    </header>
+
+    <div class="method" id="method">
+      <div class="method__tower" aria-hidden="true">
+        <div class="mtower">
+          <div class="mtower__crown"></div>
+          <div class="mfloor" data-i="3"><span>04</span><b>Conquista</b></div>
+          <div class="mfloor" data-i="2"><span>03</span><b>Execução</b></div>
+          <div class="mfloor" data-i="1"><span>02</span><b>Estratégia</b></div>
+          <div class="mfloor" data-i="0"><span>01</span><b>Diagnóstico</b></div>
+          <div class="mtower__base"></div>
+        </div>
+      </div>
+      <ol class="method__steps">
+        <li class="step" data-i="0">
+          <span class="step__no mono">01</span>
+          <h3>Diagnóstico</h3>
+          <p>Uma conversa franca sobre sua renda, seus objetivos e seu prazo. Sem pressa, sem pegadinha e sem economês — você entende cada número.</p>
+        </li>
+        <li class="step" data-i="1">
+          <span class="step__no mono">02</span>
+          <h3>Estratégia</h3>
+          <p>Desenhamos o plano: qual crédito, qual prazo, qual grupo, qual lance e como combinar tudo com seus investimentos para o patrimônio render mais.</p>
+        </li>
+        <li class="step" data-i="2">
+          <span class="step__no mono">03</span>
+          <h3>Execução</h3>
+          <p>Adesão, acompanhamento das assembleias e lances no momento certo. Você não fica sozinho esperando a sorte: existe uma tática por trás.</p>
+        </li>
+        <li class="step" data-i="3">
+          <span class="step__no mono">04</span>
+          <h3>Conquista</h3>
+          <p>Contemplação, uso inteligente do crédito e os próximos passos para o patrimônio continuar subindo. Um andar conquistado vira a base do próximo.</p>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANDAR 5 · DÚVIDAS ============ -->
+<section class="section" id="duvidas" data-floor="5">
+  <div class="wrap wrap--narrow">
+    <header class="sec-head">
+      <p class="sec-tag" data-reveal><b>Andar 05</b> Dúvidas</p>
+      <h2 class="sec-title" data-split>O que todo mundo <em>pergunta.</em></h2>
+    </header>
+    <div class="faq" id="faq">
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false"><span>O que é consórcio, afinal?</span><i></i></button>
+        <div class="faq__a"><div><p>É um grupo de pessoas que se reúne para, juntas, formar uma poupança coletiva. Todo mês o grupo paga e algumas cotas são contempladas com uma carta de crédito para comprar imóvel ou veículo. É uma modalidade regulada pelo Banco Central do Brasil.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false"><span>Consórcio tem juros?</span><i></i></button>
+        <div class="faq__a"><div><p>Não tem juros. Em vez disso há a taxa de administração e o fundo de reserva, que são diluídos nas parcelas. Por isso, em muitos cenários, o custo total fica abaixo do de um financiamento — compare no simulador.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false"><span>Como eu sou contemplado?</span><i></i></button>
+        <div class="faq__a"><div><p>De duas formas: por sorteio, em que todas as cotas ativas concorrem, ou por lance, em que você oferece um valor para antecipar a contemplação. Na seção Assembleia você vê isso funcionando.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false"><span>Consórcio ou financiamento: qual é melhor?</span><i></i></button>
+        <div class="faq__a"><div><p>Depende do seu objetivo e da sua urgência. Financiamento libera o bem na hora, mas com juros. Consórcio custa menos, porém exige planejamento, porque a contemplação não tem data garantida. Muita gente combina os dois com estratégia — é exatamente isso que desenhamos juntos.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false"><span>Posso usar o consórcio para investir?</span><i></i></button>
+        <div class="faq__a"><div><p>Sim. A alavancagem patrimonial usa a carta de crédito como ferramenta para adquirir ativos, como imóveis para renda ou valorização. Cada caso tem riscos e premissas próprias, por isso começamos sempre com um diagnóstico.</p></div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false"><span>Quanto custa conversar com vocês?</span><i></i></button>
+        <div class="faq__a"><div><p>A primeira conversa é para entender o seu cenário e tirar dúvidas — pelo WhatsApp, sem compromisso.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COBERTURA · CONTATO ============ -->
+<section class="cta" id="contato" data-floor="6">
+  <div class="cta__glow" aria-hidden="true"></div>
+  <div class="wrap cta__wrap">
+    <p class="sec-tag" data-reveal><b>Cobertura</b> Contato</p>
+    <h2 class="cta__title" data-split>Me chama que eu <em>descomplico.</em></h2>
+    <a class="orb" href="https://wa.link/2q9z90" target="_blank" rel="noopener" data-magnetic data-cursor="whats" aria-label="Chamar no WhatsApp">
+      <svg class="orb__ring" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="circ" d="M100 100 m-82 0 a82 82 0 1 1 164 0 a82 82 0 1 1 -164 0"/></defs>
+        <text><textPath href="#circ" startOffset="0" textLength="508" lengthAdjust="spacing">CHAMAR NO WHATSAPP • FALAR COM A GENTE • </textPath></text>
+      </svg>
+      <span class="orb__core"><svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+    </a>
+    <p class="cta__sub" data-reveal>Ou acompanhe no Instagram <a href="https://www.instagram.com/levandoscki.investimentos/" target="_blank" rel="noopener">@levandoscki.investimentos</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <svg class="brand__mark brand__mark--lg" viewBox="0 0 100 112" aria-hidden="true"><use href="#lev-mark"/></svg>
+      <div><b>LEVANDOSCKI</b><small>INVESTIMENTOS</small></div>
+    </div>
+    <p class="footer__tag">Alavancagem financeira e patrimonial.<br>+ de R$ 150 milhões sob gestão.</p>
+    <div class="footer__links">
+      <a href="https://wa.link/2q9z90" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/levandoscki.investimentos/" target="_blank" rel="noopener">Instagram</a>
+      <a href="#terreo" id="toTop">Voltar ao térreo ↑</a>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <p>O consórcio é regulado pela Lei nº 11.795/2008 e fiscalizado pelo Banco Central do Brasil. As simulações deste site são ilustrativas, usam premissas editáveis e não representam promessa de contemplação, taxa, rentabilidade ou aprovação de crédito. Investimentos envolvem riscos; rentabilidade passada não garante resultados futuros. Condições reais dependem da administradora, do grupo e do seu perfil.</p>
+    <p>© <span id="year">2026</span> Levandoscki Investimentos. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="js/core.js" defer></script>
+<script src="js/hero.js" defer></script>
+<script src="js/simulator.js" defer></script>
+<script src="js/assembly.js" defer></script>
+</body>
+</html>
