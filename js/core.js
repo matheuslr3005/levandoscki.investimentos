@@ -159,24 +159,39 @@
     doc.classList.add('has-cursor');
     var dot = $('.cursor__dot', cursor), ring = $('.cursor__ring', cursor), lab = $('.cursor__label', cursor);
     var mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+    var target = null, shown = false, lastT = performance.now();
     window.addEventListener('pointermove', function (e) {
-      mx = e.clientX; my = e.clientY; cursor.classList.add('is-on');
-      dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)';
-      var t = e.target.closest ? e.target.closest('a,button,summary,input,label,.floor,[data-cursor],[role=tab]') : null;
+      mx = e.clientX; my = e.clientY; target = e.target;
+      if (!shown) { shown = true; rx = mx; ry = my; cursor.classList.add('is-on'); }
+    }, { passive: true });
+    document.addEventListener('pointerleave', function () { shown = false; cursor.classList.remove('is-on'); });
+    window.addEventListener('pointerdown', function () { cursor.classList.add('is-down'); });
+    window.addEventListener('pointerup', function () { cursor.classList.remove('is-down'); });
+
+    var lastTarget = null;
+    function updateHover() {
+      if (target === lastTarget) return;
+      lastTarget = target;
+      var t = target && target.closest ? target.closest('a,button,summary,input,label,.floor,[data-cursor],[role=tab]') : null;
       var label = t && t.getAttribute('data-cursor');
       if (t && t.classList.contains('is-active') && t.classList.contains('floor')) label = null;
       cursor.classList.toggle('is-link', !!t);
       cursor.classList.toggle('is-label', !!label);
       if (label) lab.textContent = label;
-    }, { passive: true });
-    document.addEventListener('pointerleave', function () { cursor.classList.remove('is-on'); });
-    window.addEventListener('pointerdown', function () { cursor.classList.add('is-down'); });
-    window.addEventListener('pointerup', function () { cursor.classList.remove('is-down'); });
-    (function loop() {
-      rx = lerp(rx, mx, .18); ry = lerp(ry, my, .18);
+    }
+    // Ponto e anel na mesma passada de quadro; o anel segue rápido (suavização
+    // independente do fps: ~55% da distância por quadro a 60fps).
+    (function loop(now) {
+      var k = 1 - Math.pow(1 - .55, Math.min(now - lastT, 50) / 16.67);
+      lastT = now;
+      rx += (mx - rx) * k; ry += (my - ry) * k;
+      if (Math.abs(mx - rx) < .05) rx = mx;
+      if (Math.abs(my - ry) < .05) ry = my;
+      dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)';
       ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
+      updateHover();
       requestAnimationFrame(loop);
-    })();
+    })(lastT);
   }
 
   /* ---------- Botões magnéticos ---------- */
